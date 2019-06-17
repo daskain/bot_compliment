@@ -1,5 +1,7 @@
 package compliment;
 
+import java.util.Timer;
+
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
@@ -20,6 +22,7 @@ public class BotForYou extends TelegramLongPollingBot {
     
     public void onUpdateReceived(Update update) {
         // We check if the update has a message and the message has text
+    	Timer timer = new Timer();
         if (update.hasMessage() && update.getMessage().hasText()) {
             SendMessage message = new SendMessage() // Create a SendMessage object with mandatory fields
                     .setChatId(update.getMessage().getChatId())
@@ -29,6 +32,20 @@ public class BotForYou extends TelegramLongPollingBot {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
+            
         }
+        Thread run = new Thread(new Runnable() {
+            public void run() {
+                while(true){
+                    try {
+                    	SendMessage message = new SendMessage() // Create a SendMessage object with mandatory fields
+                                .setText("Это первый пробный комплимент - ты самая красивая!");
+                        Thread.sleep(1000); //1000 - 1 сек
+                    } catch (InterruptedException ex) {
+                    }
+                }
+            }
+        });
+        run.start(); // заводим
     }
 }
