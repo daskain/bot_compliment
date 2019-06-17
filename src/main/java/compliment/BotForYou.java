@@ -40,8 +40,8 @@ public class BotForYou extends TelegramLongPollingBot {
                     try {
                     	SendMessage message = new SendMessage()
                     			.setChatId(update.getMessage().getChatId())// Create a SendMessage object with mandatory fields
-                                .setText("Это первый пробный комплимент - ты самая красивая!");
-                        Thread.sleep(1000); //1000 - 1 сек
+                                .setText("РЇ С‚РІРѕР№ РїРµСЂРІС‹Р№ РєРѕРјРїР»РёРјРµРЅС‚ - С‚С‹ СЃР°РјР°СЏ РєСЂР°СЃРёРІР°СЏ!");
+                        Thread.sleep(1000); //1000 - 1 пїЅпїЅпїЅ
                         try {
                             execute(message); // Call method to send the message
                         } catch (TelegramApiException e) {
@@ -52,6 +52,6 @@ public class BotForYou extends TelegramLongPollingBot {
                 }
             }
         });
-        run.start(); // заводим
+        run.start(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
 }
