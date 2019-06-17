@@ -20,7 +20,7 @@ public class BotForYou extends TelegramLongPollingBot {
         return "867096059:AAF7A6ezg4ud6sHTh_jh6iPpL-ng0iOXYzo";
     }
     
-    public void onUpdateReceived(Update update) {
+    public void onUpdateReceived(final Update update) {
         // We check if the update has a message and the message has text
     	Timer timer = new Timer();
         if (update.hasMessage() && update.getMessage().hasText()) {
@@ -38,7 +38,8 @@ public class BotForYou extends TelegramLongPollingBot {
             public void run() {
                 while(true){
                     try {
-                    	SendMessage message = new SendMessage() // Create a SendMessage object with mandatory fields
+                    	SendMessage message = new SendMessage()
+                    			.setChatId(update.getMessage().getChatId())// Create a SendMessage object with mandatory fields
                                 .setText("Это первый пробный комплимент - ты самая красивая!");
                         Thread.sleep(1000); //1000 - 1 сек
                         try {
