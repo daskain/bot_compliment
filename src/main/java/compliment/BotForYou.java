@@ -41,6 +41,11 @@ public class BotForYou extends TelegramLongPollingBot {
                     	SendMessage message = new SendMessage() // Create a SendMessage object with mandatory fields
                                 .setText("Это первый пробный комплимент - ты самая красивая!");
                         Thread.sleep(1000); //1000 - 1 сек
+                        try {
+                            execute(message); // Call method to send the message
+                        } catch (TelegramApiException e) {
+                            e.printStackTrace();
+                        }
                     } catch (InterruptedException ex) {
                     }
                 }
